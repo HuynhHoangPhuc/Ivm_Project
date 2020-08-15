@@ -3,7 +3,8 @@ import unittest
 from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
 
-from app.main import create_app, db
+from app.main import create_app
+from app.main.model.db import db
 
 from app.main.env import ENV
 
