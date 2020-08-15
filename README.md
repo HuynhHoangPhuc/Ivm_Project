@@ -9,7 +9,6 @@ For Linux(Ubuntu): `pip3 install pipenv`
 ## Install package and active environment
 
      pipenv install
-     pipenv shell
   
 ## Update database
   
@@ -28,3 +27,7 @@ For Linux(Ubuntu): `pip3 install pipenv`
 ## Testing
 
      python manage.py test
+
+## Active environment
+
+     pipenv shell
