@@ -16,6 +16,8 @@ flask-migrate = "*"
 flask-script = "*"
 flask-testing = "*"
 psycopg2-binary = "*"
+flask-marshmallow = "*"
+marshmallow-sqlalchemy = "*"
 
 [requires]
 python_version = "3.8"
