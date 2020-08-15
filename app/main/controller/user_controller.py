@@ -1,5 +1,4 @@
-from flask import Response, request
-from flask_restful import Resource
+from flask_restful import Resource, reqparse
 
 
 from app.main.service.user_service import *
@@ -7,22 +6,28 @@ from app.main.service.user_service import *
 
 class UsersApi(Resource):
     def get(self):
-        users = get_all_users
-        return Response(users, mimetype="application/json", status=200)
+        return get_all_users()
 
     def post(self):
-        body = request.get_json()
-        return create_a_user(**body)
+        parser = reqparse.RequestParser()
+        parser.add_argument("email")
+        parser.add_argument("phone")
+        parser.add_argument("password")
+        user = parser.parse_args()
+        return add_a_user(**user)
 
 
 class UserApi(Resource):
     def put(self, uuid):
-        body = request.get_json()
-        return update_a_user(uuid, **body)
+        parser = reqparse.RequestParser()
+        parser.add_argument("email")
+        parser.add_argument("phone")
+        parser.add_argument("password")
+        user = parser.parse_args()
+        return update_a_user(uuid, **user)
 
     def delete(self, uuid):
         return delete_a_user(uuid)
 
     def get(self, uuid):
-        user = get_a_user(uuid)
-        return Response(user, mimetype="application/json", status=200)
+        return get_a_user(uuid)

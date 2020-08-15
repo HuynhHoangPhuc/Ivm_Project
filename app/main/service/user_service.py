@@ -1,11 +1,13 @@
 import uuid
 import datetime
+import json
 
+from app.main.model.db import db
 from app.main.model.user import User
-from app.main import db
+from app.main.schema.user_schema import UserSchema
 
 
-def add_a_user(data):
+def add_a_user(**data):
     user = User.query.filter_by(email=data['email']).first()
     if not user:
         new_user = User(
@@ -32,14 +34,18 @@ def add_a_user(data):
 
 
 def get_all_users():
-    return User.query.all()
+    users = []
+    for user in User.query.all():
+        users.append(UserSchema().dump(user))
+    return users
 
 
 def get_a_user(uuid):
-    return User.query.filter_by(uuid=uuid).first()
+    user = User.query.filter_by(uuid=uuid).first()
+    return UserSchema().dump(user)
 
 
-def update_a_user(uuid, data):
+def update_a_user(uuid, **data):
     user = User.query.filter_by(uuid=uuid).first()
     if user:
         user.email = data['email']
@@ -66,4 +72,4 @@ def delete_a_user(uuid):
     db.session.delete(user)
     db.session.commit()
 
-    return '', 200
+    return 'Deleted'

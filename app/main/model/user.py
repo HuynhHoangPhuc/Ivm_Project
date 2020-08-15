@@ -1,4 +1,5 @@
-from .. import db, bcrypt
+from app.main.model.db import db
+from app.main.util.bcrypt import bcrypt
 
 
 class User(db.Model):
@@ -23,6 +24,3 @@ class User(db.Model):
 
     def check_password(self, password):
         return bcrypt.check_password_hash(self.__password, password)
-
-    def __repr__(self):
-        return "{}".format(self.email)
