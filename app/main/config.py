@@ -1,4 +1,4 @@
-from .env import POSTGRESQL, REDIS, SECRET
+from app.main.env import POSTGRESQL, REDIS, SECRET
 
 
 class Config:
