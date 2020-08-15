@@ -3,6 +3,7 @@
 ## Install pipenv
 
 For Windows and Macos:`pip install pipenv`
+<br/>
 For Linux(Ubuntu): `pip3 install pipenv`
 
 ## Install package and active environment
@@ -18,12 +19,12 @@ For Linux(Ubuntu): `pip3 install pipenv`
 
 ## Run database
 
-    docker stop $(docker ps -a -q) && docker-compose up
+     docker stop $(docker ps -a -q) && docker-compose up
     
 ## Start server
 
-    python manage.py run
+     python manage.py run
     
 ## Testing
 
-    python manage.py test
+     python manage.py test
